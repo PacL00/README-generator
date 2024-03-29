@@ -29,7 +29,7 @@ const questions = [
         type: "checkbox",
         name: "license",
         message: "select the desired license for this project.",
-        choices: ["APACHE2.0", "MIT", "BSD2", "BSD3", "MPL2.0", "Boost1.0", "None"],
+        choices: ["apache-2.0", "mit", "bsd-2-clause", "bsd-3-clause", "mpl-2.0", "bsl-1.0", "None"],
     },
     {
         type: "input",
@@ -39,8 +39,13 @@ const questions = [
     {
         type: "input",
         name: "usage",
-        message: "list any languages or technologies associated with this project.",
+        message: "describe what your project does and why its usefull.",
     },
+    {
+        type: "input",
+        name: "contribution",
+        message: "list any contribution guide lines on this project",
+    },  
     {
         type: "input",
         name: "creator",
@@ -50,11 +55,6 @@ const questions = [
         type: "input",
         name: "email",
         message: "Provide a valid email address."
-    },
-    {
-        type: "input",
-        name: "contributors",
-        message: "list any contributors on this project (use GitHub usernames).",
     },
     {
         type: "input",
@@ -72,7 +72,7 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions).then((responses) => {
         console.log("Creating Your Professional README.md File...");
-        writeToFile("./dist/README.md", generateMarkdown({ ...responses }));
+        writeToFile("./README.md", generateMarkdown({ ...responses }));
     });
 }
 
